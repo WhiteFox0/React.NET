@@ -18,7 +18,7 @@
     "ReactDemo": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "http://localhost:5000",
+      "launchUrl": "http://localhost:24139",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

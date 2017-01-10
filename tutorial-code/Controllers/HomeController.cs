@@ -16,7 +16,7 @@ namespace ReactDemo.Controllers
 				{
 					Id = 1,
 					Author = "Daniel Lo Nigro",
-					Text = "Hello ReactJS.NET World!"
+					Text = "Hello *ReactJS.NET* World!!!!!"
 				},
 				new CommentModel
 				{
@@ -36,6 +36,16 @@ namespace ReactDemo.Controllers
 		public ActionResult Index()
 		{
 			return View(_comments);
+		}
+
+		public ActionResult Clock()
+		{
+			return View();
+		}
+
+		public ActionResult OnOff()
+		{
+			return View();
 		}
 
 		[Route("comments")]

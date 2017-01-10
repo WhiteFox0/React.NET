@@ -188,3 +188,6 @@ UpgradeLog*.htm
 
 # Microsoft Fakes
 FakesAssemblies/
+
+#libs
+/tutorial-code/wwwroot/lib/

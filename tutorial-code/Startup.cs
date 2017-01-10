@@ -63,7 +63,10 @@ namespace ReactDemo
 				config
 				  .AddScript("~/js/remarkable.min.js")
 				  .AddScript("~/js/tutorial.jsx")
-				  .SetJsonSerializerSettings(new JsonSerializerSettings
+				  .AddScript("~/js/tutorial_clock.jsx")
+				  .AddScript("~/js/tutorial/OnOff.jsx")
+				  .AddScript("~/lib/moment/moment.js")
+                  .SetJsonSerializerSettings(new JsonSerializerSettings
 					{
 						StringEscapeHandling = StringEscapeHandling.EscapeHtml,
 						ContractResolver = new CamelCasePropertyNamesContractResolver()

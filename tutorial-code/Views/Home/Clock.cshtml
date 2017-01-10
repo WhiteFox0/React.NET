@@ -1,0 +1,20 @@
+﻿@{
+	Layout = null;
+}
+<html>
+<head>
+	<title>Hello React</title>
+</head>
+<body>
+    @Html.React("App", new {})
+    @*<div id="content"></div>*@
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react-dom.js"></script>
+    <script src="/lib/moment/moment.js"></script>
+    <script src="@Url.Content("~/js/tutorial_clock.jsx")"></script>
+
+    @Html.ReactInitJavaScript()
+
+</body>
+</html>
