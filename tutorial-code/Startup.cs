@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
@@ -7,6 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -60,11 +62,25 @@ namespace ReactDemo
 				// add all the necessary JavaScript files here. This includes
 				// your components as well as all of their dependencies.
 				// See http://reactjs.net/ for more information. Example:
+                var fileProvider = new PhysicalFileProvider(
+                    Path.Combine(
+                        Directory.GetCurrentDirectory(), 
+                        @"wwwroot", "js"));
+
+                var tutorial_files = fileProvider.GetDirectoryContents("tutorial")
+                    .Where(f => f.Name.EndsWith(".jsx"))
+                    .Select(f => "tutorial/" + f.Name);
+
+                var js_files = fileProvider.GetDirectoryContents("/")
+                    .Where(f => !f.IsDirectory 
+                        && (f.Name.EndsWith(".jsx") || f.Name.EndsWith(".js")))
+                    .Select(f => f.Name);
+
+                foreach (var file in js_files.Concat(tutorial_files))
+                    config.AddScript($"~/js/{file}");
+
+
 				config
-				  .AddScript("~/js/remarkable.min.js")
-				  .AddScript("~/js/tutorial.jsx")
-				  .AddScript("~/js/tutorial_clock.jsx")
-				  .AddScript("~/js/tutorial/OnOff.jsx")
 				  .AddScript("~/lib/moment/moment.js")
                   .SetJsonSerializerSettings(new JsonSerializerSettings
 					{

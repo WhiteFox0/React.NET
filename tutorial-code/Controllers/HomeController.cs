@@ -48,6 +48,11 @@ namespace ReactDemo.Controllers
 			return View();
 		}
 
+		public ActionResult Login()
+		{
+			return View();
+		}
+
 		[Route("comments")]
 		[ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
 		public ActionResult Comments()
